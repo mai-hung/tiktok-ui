@@ -1,0 +1,40 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
+    // display: none;
+}
+
+.avatar {
+    width: 40px;
+
+    img {
+        border-radius: 50%;
+        width: 100%;
+        position: relative;
+        top: 4px;
+        object-fit: cover;
+    }
+}
+.body {
+    margin-left: 12px;
+    font-size: 1.6rem;
+}
+.check {
+    margin-left: 6px;
+    position: relative;
+    top: 2px;
+    color: rgb(32, 213, 236);
+}
+.title {
+    font-weight: 500;
+}
+.description {
+    color: var(--disable-text);
+    font-size: 1.4rem;
+}

@@ -1,5 +1,58 @@
+import Tippy from '@tippyjs/react/headless';
+import { useEffect, useState } from 'react';
+import classNames from 'classnames/bind';
+import { FaCircleNotch, FaRegTimesCircle, FaSistrix } from 'react-icons/fa';
+
+import styles from './Header.module.scss';
+import { images } from '~/assets';
+import Wrapper from '~/components/Wrapper';
+import AccountItem from '~/components/AccountItem';
+
+const cx = classNames.bind(styles);
+
 function Header() {
-    return <h2>header</h2>;
+    // const [visible, setVisible] = useState(false);
+    const [accounts, setAcounts] = useState([]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setAcounts([]);
+        }, 0);
+    }, []);
+    return (
+        <header className={cx('wrapper')}>
+            <div className={cx('inner')}>
+                <div className={cx('logo')}>
+                    <img src={images.logo} alt={'logo'} />
+                </div>
+                <Tippy
+                    visible={accounts.length > 0}
+                    interactive={true}
+                    render={(attrs) => (
+                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                            <Wrapper>
+                                <h4 className={cx('search-title')}>Accounts</h4>
+                                <AccountItem />
+                                <AccountItem />
+                                <AccountItem />
+                                <AccountItem />
+                            </Wrapper>
+                        </div>
+                    )}
+                >
+                    <div className={cx('search')}>
+                        <input placeholder="Enter accounts and videos" className={cx('input')} spellCheck={false} />
+                        <FaCircleNotch className={cx('icon')} />
+                        <FaRegTimesCircle className={cx('icon')} />
+                        <button className={cx('btn-search')}>
+                            <FaSistrix />
+                        </button>
+                    </div>
+                </Tippy>
+                <div className={cx('right-inner')}></div>
+            </div>
+        </header>
+    );
 }
 
 export default Header;
