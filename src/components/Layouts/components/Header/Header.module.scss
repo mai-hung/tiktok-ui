@@ -104,3 +104,8 @@
     position: absolute;
     right: calc(var(--width-btn-search) + 8px);
 }
+
+.right-inner {
+    display: flex;
+    align-items: center;
+}

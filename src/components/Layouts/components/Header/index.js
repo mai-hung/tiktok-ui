@@ -7,6 +7,7 @@ import styles from './Header.module.scss';
 import { images } from '~/assets';
 import Wrapper from '~/components/Wrapper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -49,7 +50,11 @@ function Header() {
                         </button>
                     </div>
                 </Tippy>
-                <div className={cx('right-inner')}></div>
+                <div className={cx('right-inner')}>
+                    <Button primary to="./" disable rounded LeftIcon={FaCircleNotch}>
+                        Log in
+                    </Button>
+                </div>
             </div>
         </header>
     );
