@@ -7,7 +7,14 @@ const cx = classNames.bind(styles);
 
 function MenuItem({ item, onClick }) {
     return (
-        <Button LeftIcon={item.icon} to={item.to} onClick={onClick} className={cx('menu-item', 'important')}>
+        <Button
+            LeftIcon={item.icon}
+            // href=
+            to={item.to}
+            onClick={onClick}
+            separate={item.separate}
+            className={cx('menu-item', 'important')}
+        >
             {item.title}
         </Button>
     );

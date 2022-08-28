@@ -41,3 +41,24 @@ a {
     color: var(--text-color);
     text-decoration: none;
 }
+
+// tippy css
+
+.tippy-box {
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    background-color: rgba(84, 84, 84, 0.92);
+    color: rgb(255, 255, 255);
+    // padding: 8px;
+}
+.tippy-content {
+    padding: 8px 9px;
+}
+.tippy-arrow {
+    color: rgba(84, 84, 84, 0.92);
+}
+.tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
+    top: -8px;
+}

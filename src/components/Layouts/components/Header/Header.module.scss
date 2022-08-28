@@ -104,6 +104,7 @@
     position: absolute;
     right: calc(var(--width-btn-search) + 8px);
 }
+// right inner header
 
 .right-inner {
     display: flex;
@@ -120,7 +121,26 @@
         }
     }
 }
+.btn-left-user {
+    font-size: 2.2rem;
+    height: 26px;
+    width: 26px;
+    margin-left: 20px;
+    cursor: pointer;
+    color: rgba(22, 24, 35, 1);
+}
 
+.user-image {
+    margin-left: 12px;
+    padding-left: 4px;
+    cursor: pointer;
+    img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
 // menu
 .menu-icon {
     display: inline-block;

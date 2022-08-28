@@ -12,6 +12,7 @@ function Button({
     outline = false,
     border = false,
     primary,
+    separate = false,
     size,
     LeftIcon,
     RightIcon,
@@ -52,6 +53,7 @@ function Button({
         rounded,
         outline,
         disable,
+        separate,
         [size]: size,
     };
     return (
