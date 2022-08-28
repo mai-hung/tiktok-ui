@@ -1,4 +1,5 @@
 import Tippy from '@tippyjs/react/headless';
+
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { WrapPopper } from '~/components/Popper';
@@ -11,12 +12,15 @@ const cx = classNames.bind(styles);
 
 function Menu({ children, items }) {
     const [itemsMenu, setItemsMenu] = useState([{ data: items }]);
-
+    // const [visible, setVisible] = useState(false);
     const current = itemsMenu[itemsMenu.length - 1];
 
     return (
         <Tippy
-            visible
+            // visible={visible}
+            delay={[0, 700]}
+            onHide={() => setItemsMenu([{ data: items }])}
+            // animation="fade"
             placement="bottom-end"
             interactive={true}
             render={(attrs) => (
@@ -39,7 +43,11 @@ function Menu({ children, items }) {
                                 key={index}
                                 item={item}
                                 onClick={() => {
-                                    setItemsMenu((prev) => [...prev, item.children]);
+                                    const hasChildren = !!item.children;
+                                    console.log(item);
+                                    if (hasChildren) {
+                                        setItemsMenu((prev) => [...prev, item.children]);
+                                    }
                                 }}
                             />
                         ))}
