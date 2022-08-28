@@ -1,14 +1,40 @@
 import Tippy from '@tippyjs/react/headless';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-import { FaCircleNotch, FaRegTimesCircle, FaSistrix } from 'react-icons/fa';
+import {
+    FaCircleNotch,
+    FaEllipsisV,
+    FaKeyboard,
+    FaLanguage,
+    FaPlus,
+    FaQuestionCircle,
+    FaRegTimesCircle,
+    FaSistrix,
+} from 'react-icons/fa';
 
 import styles from './Header.module.scss';
 import { images } from '~/assets';
-import Wrapper from '~/components/Wrapper';
+import { MenuPopper, WrapPopper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 
+// fake data menu
+const MENU_ITEMS = [
+    {
+        title: 'Language',
+        icon: FaLanguage,
+        // to:'/lang'
+    },
+    {
+        title: 'Feedback and help',
+        icon: FaQuestionCircle,
+        to: '/following',
+    },
+    {
+        title: 'Shortcuts',
+        icon: FaKeyboard,
+    },
+];
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -31,13 +57,13 @@ function Header() {
                     interactive={true}
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <Wrapper>
+                            <WrapPopper>
                                 <h4 className={cx('search-title')}>Accounts</h4>
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
-                            </Wrapper>
+                            </WrapPopper>
                         </div>
                     )}
                 >
@@ -51,9 +77,17 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('right-inner')}>
-                    <Button primary to="./" disable rounded LeftIcon={FaCircleNotch}>
+                    <Button outline to="./" className={cx('upload-btn')} LeftIcon={FaPlus}>
+                        Upload
+                    </Button>
+                    <Button primary to="./">
                         Log in
                     </Button>
+                    <MenuPopper items={MENU_ITEMS}>
+                        <div className={cx('menu-icon')}>
+                            <FaEllipsisV />
+                        </div>
+                    </MenuPopper>
                 </div>
             </div>
         </header>

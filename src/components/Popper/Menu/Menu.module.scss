@@ -1,0 +1,16 @@
+.menu-item {
+    justify-content: flex-start;
+    width: 100%;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 0;
+    + .menu-item {
+        margin-left: 0;
+    }
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+.menu-list {
+    padding-bottom: 8px;
+}

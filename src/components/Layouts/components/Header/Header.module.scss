@@ -108,4 +108,29 @@
 .right-inner {
     display: flex;
     align-items: center;
+    .upload-btn {
+        border: 1px solid rgba(22, 24, 35, 0.12);
+        border-radius: 2px;
+        color: var(--text-color);
+        font-weight: 600;
+        &:hover {
+            border: 1px solid rgba(22, 24, 35, 0.12);
+
+            background-color: rgba(22, 24, 35, 0.03);
+        }
+    }
+}
+
+// menu
+.menu-icon {
+    display: inline-block;
+    text-align: center;
+    font-weight: 400;
+    width: 30px;
+    font-size: 1.6rem;
+    margin-left: 8px;
+
+    // padding: 8px 16px;
+    // font-size: ;
+    // background-color: aqua;
 }

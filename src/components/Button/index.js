@@ -22,7 +22,7 @@ function Button({
 }) {
     // console.log(others);
 
-    let Comp;
+    let Comp = 'a';
 
     const props = {
         onClick,
@@ -36,7 +36,6 @@ function Button({
             }
         }
     }
-    // console.log(props);
     if (to) {
         props.to = to;
         Comp = Link;
