@@ -1,25 +1,47 @@
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import Button from '~/components/Button';
+import { useState } from 'react';
 import { WrapPopper } from '~/components/Popper';
+import Header from './Header';
 
 import styles from './Menu.module.scss';
+import MenuItem from './MenuItem';
 
 const cx = classNames.bind(styles);
 
 function Menu({ children, items }) {
+    const [itemsMenu, setItemsMenu] = useState([{ data: items }]);
+
+    const current = itemsMenu[itemsMenu.length - 1];
+
     return (
         <Tippy
-            // visible
+            visible
             placement="bottom-end"
             interactive={true}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <WrapPopper>
-                        {items.map((item, index) => (
-                            <Button key={index} LeftIcon={item.icon} to={item.to} className={cx('menu-item')}>
-                                {item.title}
-                            </Button>
+                        {/* //header menu */}
+                        {current.title ? (
+                            <Header
+                                title={current.title}
+                                onBack={() => {
+                                    setItemsMenu((prev) => prev.slice(0, itemsMenu.length - 1));
+                                }}
+                            />
+                        ) : (
+                            <></>
+                        )}
+                        {/*body menu */}
+                        {current.data.map((item, index) => (
+                            <MenuItem
+                                key={index}
+                                item={item}
+                                onClick={() => {
+                                    setItemsMenu((prev) => [...prev, item.children]);
+                                }}
+                            />
                         ))}
                     </WrapPopper>
                 </div>
