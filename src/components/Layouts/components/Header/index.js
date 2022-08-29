@@ -10,13 +10,9 @@ import {
     FaEllipsisV,
     FaKeyboard,
     FaLanguage,
-    FaPlus,
     FaQuestionCircle,
-    FaRegCommentDots,
-    FaRegPaperPlane,
     FaRegTimesCircle,
     FaSignOutAlt,
-    FaSistrix,
     FaUser,
 } from 'react-icons/fa';
 
@@ -25,6 +21,8 @@ import { images } from '~/assets';
 import { MenuPopper, WrapPopper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import { Inbox, Messages, Search, Upload as UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 // fake data menu
 const MENU_ITEMS = [
     {
@@ -118,25 +116,25 @@ function Header() {
                         <FaCircleNotch className={cx('icon')} />
                         <FaRegTimesCircle className={cx('icon')} />
                         <button className={cx('btn-search')}>
-                            <FaSistrix />
+                            <Search />
                         </button>
                     </div>
                 </HeadlessTippy>
 
                 <div className={cx('right-inner')}>
-                    <Button outline to="./" className={cx('upload-btn')} LeftIcon={FaPlus}>
+                    <Button outline to="./" className={cx('upload-btn')} LeftIcon={UploadIcon}>
                         Upload
                     </Button>
                     {currentUser ? (
                         <>
                             <Tippy content="Messages">
                                 <div className={cx('btn-left-user', 'message')}>
-                                    <FaRegPaperPlane />
+                                    <Messages />
                                 </div>
                             </Tippy>
                             <Tippy content="Inbox">
                                 <div className={cx('btn-left-user', 'inbox')}>
-                                    <FaRegCommentDots />
+                                    <Inbox />
                                 </div>
                             </Tippy>
                         </>
@@ -150,7 +148,10 @@ function Header() {
                     <MenuPopper items={currentUser ? LOGGED_ITEMS : MENU_ITEMS}>
                         {currentUser ? (
                             <div className={cx('user-image')}>
-                                <img src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f485490f970a0c1ccbf158b9e468450b~c5_100x100.jpeg?x-expires=1661868000&x-signature=F2bJVZ%2BY0cLKpzBJIQY8LJ1THug%3D" />
+                                <Image
+                                    alt="user"
+                                    src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f485490f970a0c1ccbf158b9e468450b~c5_100x100.jpeg?x-expires=1661868000&x-signature=F2bJVZ%2BY0cLKpzBJIQY8LJ1THug%3D"
+                                />
                             </div>
                         ) : (
                             <div className={cx('menu-icon')}>
