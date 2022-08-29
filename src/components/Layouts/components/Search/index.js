@@ -1,7 +1,7 @@
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
-import { FaRegTimesCircle } from 'react-icons/fa';
+import { FaRegTimesCircle, FaCircleNotch } from 'react-icons/fa';
 
 import { WrapPopper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
@@ -10,21 +10,35 @@ import styles from './Search.module.scss';
 const cx = classNames.bind(styles);
 
 function Search() {
-    const [results, setResults] = useState([]);
+    const [resultsSearch, setResultsSearch] = useState([]);
     const [valueSearch, setValueSearch] = useState('');
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setResults([]);
-        }, 0);
-    }, []);
-
+        if (!valueSearch.trim()) {
+            setResultsSearch([]);
+            return;
+        }
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(valueSearch)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setResultsSearch(res.data);
+                setLoading(false);
+                return res;
+            })
+            .catch((err) => {
+                setLoading(false);
+                throw new Error(err);
+            });
+    }, [valueSearch]);
+    console.log(resultsSearch);
     const handleClose = () => {
         setValueSearch('');
-        setResults([]);
+        setResultsSearch([]);
         inputRef.current.focus();
     };
 
@@ -34,16 +48,15 @@ function Search() {
 
     return (
         <HeadlessTippy
-            visible={showResult && results.length > 0}
+            visible={showResult && resultsSearch.length > 0}
             interactive={true}
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <WrapPopper>
                         <h4 className={cx('search-title')}>Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {resultsSearch.map((item) => (
+                            <AccountItem key={item.id} data={item} />
+                        ))}
                     </WrapPopper>
                 </div>
             )}
@@ -63,9 +76,13 @@ function Search() {
                         setShowResult(true);
                     }}
                 />
-                {/* <FaCircleNotch className={cx('action-icon')} /> */}
+                {!!loading && <FaCircleNotch className={cx('action-icon', 'loading')} />}
                 {/* close icon */}
-                {valueSearch ? <FaRegTimesCircle className={cx('action-icon')} onClick={handleClose} /> : <></>}
+                {valueSearch && !loading ? (
+                    <FaRegTimesCircle className={cx('action-icon')} onClick={handleClose} />
+                ) : (
+                    <></>
+                )}
 
                 <button className={cx('btn-search')}>
                     <SearchIcon />

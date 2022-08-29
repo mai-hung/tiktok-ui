@@ -4,28 +4,25 @@ import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
 import Image from '../Image';
 import { images } from '~/assets';
+import { Link } from 'react-router-dom';
 
 /* eslint-disable jsx-a11y/alt-text */
 
 const cx = classNames.bind(styles);
-function AccountItem() {
+function AccountItem({ data }) {
     return (
-        <div className={cx('wrapper')}>
+        <Link to={`@${data.nickname}`} className={cx('wrapper')}>
             <div className={cx('avatar')}>
-                <Image
-                    alt="ava"
-                    fallBack={images.noImage}
-                    src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/aa1f830afcbe8f07db1653638f9b3dcd.jpeg?x-expires=1661587200&x-signature=%2FVdAUH0EqX%2BCxJTyVasvevQdTL8%3D"
-                />
+                <Image alt={data.nickname} fallBack={images.noImage} src={data.avatar} />
             </div>
             <div className={cx('body')}>
                 <h4 className={cx('title')}>
-                    <span>vtv24.cab</span>
-                    <FaCheckCircle className={cx('check')} />
+                    <span>{data.full_name}</span>
+                    {!!data.tick && <FaCheckCircle className={cx('check')} />}
                 </h4>
-                <p className={cx('description')}>vtv cab</p>
+                <p className={cx('description')}>{data.nickname}</p>
             </div>
-        </div>
+        </Link>
     );
 }
 

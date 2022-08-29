@@ -80,3 +80,16 @@
     position: absolute;
     right: calc(var(--width-btn-search) + 8px);
 }
+
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.loading {
+    // display: block;
+    animation: spinner 0.6s linear infinite;
+}
