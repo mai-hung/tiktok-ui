@@ -2,6 +2,8 @@ import { FaCheckCircle } from 'react-icons/fa';
 import classNames from 'classnames/bind';
 
 import styles from './AccountItem.module.scss';
+import Image from '../Image';
+import { images } from '~/assets';
 
 /* eslint-disable jsx-a11y/alt-text */
 
@@ -10,8 +12,9 @@ function AccountItem() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('avatar')}>
-                <img
+                <Image
                     alt="ava"
+                    fallBack={images.noImage}
                     src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/aa1f830afcbe8f07db1653638f9b3dcd.jpeg?x-expires=1661587200&x-signature=%2FVdAUH0EqX%2BCxJTyVasvevQdTL8%3D"
                 />
             </div>
