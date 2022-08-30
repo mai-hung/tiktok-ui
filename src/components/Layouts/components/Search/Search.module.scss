@@ -11,6 +11,9 @@
     border-radius: var(--border-radius-search);
     border: solid 2px transparent;
     input {
+        font-family: var(--font-primary);
+        font-weight: 600;
+        line-height: 22px;
         // border: none;
         outline: none;
         background-color: transparent;

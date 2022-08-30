@@ -12,6 +12,8 @@
 
     --header-height: 60px;
     --default-layout-width: 1150px;
+
+    --font-primary: 'Proxima-Nova', sans-serif;
 }
 
 * {
@@ -26,7 +28,7 @@ html {
 
 body {
     font-size: 1.6rem;
-    font-family: 'Proxima-Nova', sans-serif;
+    font-family: var(--font-primary);
     line-height: 1.5;
     text-rendering: optimizeSpeed;
 }

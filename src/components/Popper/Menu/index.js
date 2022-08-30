@@ -10,7 +10,7 @@ import MenuItem from './MenuItem';
 
 const cx = classNames.bind(styles);
 
-function Menu({ children, items }) {
+function Menu({ children, items, hideOnClick = false }) {
     const [itemsMenu, setItemsMenu] = useState([{ data: items }]);
 
     const current = itemsMenu[itemsMenu.length - 1];
@@ -18,6 +18,7 @@ function Menu({ children, items }) {
     return (
         <HeadlessTippy
             // visible
+            hideOnClick={hideOnClick}
             delay={[0, 700]}
             onHide={() => setItemsMenu([{ data: items }])}
             placement="bottom-end"
