@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FaCheckCircle } from 'react-icons/fa';
 import classNames from 'classnames/bind';
 
@@ -26,4 +27,7 @@ function AccountItem({ data }) {
     );
 }
 
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 export default AccountItem;
