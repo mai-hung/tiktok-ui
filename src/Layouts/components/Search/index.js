@@ -8,7 +8,7 @@ import AccountItem from '~/components/AccountItem';
 import { Search as SearchIcon } from '~/components/Icons';
 import styles from './Search.module.scss';
 import { useDebounce } from '~/hooks';
-import * as request from '~/apiServices';
+import { searchService } from '~/services';
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -30,7 +30,7 @@ function Search() {
         const getApi = async () => {
             try {
                 setLoading(true);
-                const result = await request.search(debounceValue);
+                const result = await searchService(debounceValue);
                 setResultsSearch(result.data);
                 setLoading(false);
             } catch (error) {

@@ -1,4 +1,4 @@
-import * as request from '~/utils/request';
+import * as request from '~/utils/httpRequest';
 
 const search = (q, type = 'less') => {
     return request

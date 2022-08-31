@@ -1,13 +1,13 @@
-import { HeaderOnly } from '~/components/Layouts';
-import routeConfig from '~/config/routes';
+import { HeaderOnly } from '~/Layouts';
+import config from '~/config';
 
 const { Home, Following, Upload, Profile } = require('~/pages');
 
 const publicRoutes = [
-    { path: routeConfig.home, component: Home },
-    { path: routeConfig.profile, component: Profile },
-    { path: routeConfig.following, component: Following, layout: null },
-    { path: routeConfig.upload, component: Upload, layout: HeaderOnly },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.profile, component: Profile },
+    { path: config.routes.following, component: Following, layout: null },
+    { path: config.routes.upload, component: Upload, layout: HeaderOnly },
 ];
 
 const privateRoutes = [];
