@@ -58,46 +58,49 @@ function Search() {
     };
 
     return (
-        <HeadlessTippy
-            visible={showResult && resultsSearch.length > 0}
-            interactive={true}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <WrapPopper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {resultsSearch.map((item) => (
-                            <AccountItem key={item.id} data={item} />
-                        ))}
-                    </WrapPopper>
-                </div>
-            )}
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    placeholder="Search accounts and videos"
-                    className={cx('input')}
-                    value={valueSearch}
-                    spellCheck={false}
-                    ref={inputRef}
-                    onChange={handleChange}
-                    onFocus={() => {
-                        setShowResult(true);
-                    }}
-                />
-                {!!loading && <FaCircleNotch className={cx('action-icon', 'loading')} />}
-                {/* close icon */}
-                {valueSearch && !loading ? (
-                    <FaRegTimesCircle className={cx('action-icon')} onClick={handleClose} />
-                ) : (
-                    <></>
+        // disable warning Tippy
+        <div>
+            <HeadlessTippy
+                visible={showResult && resultsSearch.length > 0}
+                interactive={true}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <WrapPopper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {resultsSearch.map((item) => (
+                                <AccountItem key={item.id} data={item} />
+                            ))}
+                        </WrapPopper>
+                    </div>
                 )}
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        placeholder="Search accounts and videos"
+                        className={cx('input')}
+                        value={valueSearch}
+                        spellCheck={false}
+                        ref={inputRef}
+                        onChange={handleChange}
+                        onFocus={() => {
+                            setShowResult(true);
+                        }}
+                    />
+                    {!!loading && <FaCircleNotch className={cx('action-icon', 'loading')} />}
+                    {/* close icon */}
+                    {valueSearch && !loading ? (
+                        <FaRegTimesCircle className={cx('action-icon')} onClick={handleClose} />
+                    ) : (
+                        <></>
+                    )}
 
-                <button className={cx('btn-search')} onMouseDown={(e) => e.preventDefault()}>
-                    <SearchIcon />
-                </button>
-            </div>
-        </HeadlessTippy>
+                    <button className={cx('btn-search')} onMouseDown={(e) => e.preventDefault()}>
+                        <SearchIcon />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
 

@@ -3,11 +3,15 @@
     --width-div-search: 360px;
     --height-search: 46px;
     --border-radius-search: 32px;
-
-    height: var(--header-height);
-    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
     display: flex;
     justify-content: center;
+    height: var(--header-height);
+    width: 100%;
+    background: var(--white);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
 }
 

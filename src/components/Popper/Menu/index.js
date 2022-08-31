@@ -14,10 +14,24 @@ function Menu({ children, items, hideOnClick = false }) {
     const [itemsMenu, setItemsMenu] = useState([{ data: items }]);
 
     const current = itemsMenu[itemsMenu.length - 1];
+    const renderItem = () =>
+        current.data.map((item, index) => {
+            return (
+                <MenuItem
+                    key={index}
+                    item={item}
+                    onClick={() => {
+                        const hasChildren = !!item.children;
+                        if (hasChildren) {
+                            setItemsMenu((prev) => [...prev, item.children]);
+                        }
+                    }}
+                />
+            );
+        });
 
     return (
         <HeadlessTippy
-            // visible
             hideOnClick={hideOnClick}
             delay={[0, 700]}
             onHide={() => setItemsMenu([{ data: items }])}
@@ -38,20 +52,7 @@ function Menu({ children, items, hideOnClick = false }) {
                             <></>
                         )}
                         {/*body menu */}
-                        {current.data.map((item, index) => {
-                            return (
-                                <MenuItem
-                                    key={index}
-                                    item={item}
-                                    onClick={() => {
-                                        const hasChildren = !!item.children;
-                                        if (hasChildren) {
-                                            setItemsMenu((prev) => [...prev, item.children]);
-                                        }
-                                    }}
-                                />
-                            );
-                        })}
+                        <div className={cx('scrollable')}>{renderItem()}</div>
                     </WrapPopper>
                 </div>
             )}
