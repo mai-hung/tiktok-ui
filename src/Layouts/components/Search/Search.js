@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 function Search() {
     const [resultsSearch, setResultsSearch] = useState([]);
     const [valueSearch, setValueSearch] = useState('');
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const debounceValue = useDebounce(valueSearch, 500);
