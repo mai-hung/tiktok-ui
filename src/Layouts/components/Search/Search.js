@@ -57,6 +57,9 @@ function Search() {
         setValueSearch(searchValue);
     };
 
+    const handleClickItem = () => {
+        setShowResult(false);
+    };
     return (
         // disable warning Tippy
         <div>
@@ -68,7 +71,7 @@ function Search() {
                         <WrapPopper>
                             <h4 className={cx('search-title')}>Accounts</h4>
                             {resultsSearch.map((item) => (
-                                <AccountItem key={item.id} data={item} />
+                                <AccountItem key={item.id} data={item} onClick={handleClickItem} />
                             ))}
                         </WrapPopper>
                     </div>

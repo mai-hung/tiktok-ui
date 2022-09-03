@@ -10,9 +10,9 @@ import { Link } from 'react-router-dom';
 /* eslint-disable jsx-a11y/alt-text */
 
 const cx = classNames.bind(styles);
-function AccountItem({ data }) {
+function AccountItem({ data, onClick }) {
     return (
-        <Link to={`@${data.nickname}`} className={cx('wrapper')}>
+        <Link to={`/@${data.nickname}`} className={cx('wrapper')} onClick={onClick}>
             <div className={cx('avatar')}>
                 <Image alt={data.nickname} fallBack={images.noImage} src={data.avatar} />
             </div>
