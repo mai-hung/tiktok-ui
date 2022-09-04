@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import { FaCheckCircle } from 'react-icons/fa';
 import classNames from 'classnames/bind';
-
-import styles from './AccountItem.module.scss';
-import Image from '../Image';
-import { images } from '~/assets';
 import { Link } from 'react-router-dom';
+
+import styles from './AccountList.module.scss';
+import Image from '~/components/Image';
+import { images } from '~/assets';
 
 /* eslint-disable jsx-a11y/alt-text */
 
 const cx = classNames.bind(styles);
-function AccountItem({ data, onClick }) {
+function Account({ data, onClick }) {
     return (
         <Link to={`/@${data.nickname}`} className={cx('wrapper')} onClick={onClick}>
             <Image alt={data.nickname} fallBack={images.noImage} src={data.avatar} className={cx('avatar')} />
@@ -26,7 +26,8 @@ function AccountItem({ data, onClick }) {
     );
 }
 
-AccountItem.propTypes = {
+Account.propTypes = {
     data: PropTypes.object.isRequired,
+    onClick: PropTypes.func,
 };
-export default AccountItem;
+export default Account;

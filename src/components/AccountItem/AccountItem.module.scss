@@ -12,14 +12,9 @@
 
 .avatar {
     width: 40px;
-
-    img {
-        border-radius: 50%;
-        width: 100%;
-        position: relative;
-        top: 4px;
-        object-fit: cover;
-    }
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 .body {
     margin-left: 12px;
