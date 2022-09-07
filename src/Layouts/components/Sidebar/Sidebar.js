@@ -7,6 +7,7 @@ import AccountList from './AccountList';
 import styles from './Sidebar.module.scss';
 import { useEffect, useState } from 'react';
 import Account from './AccountList/Account';
+import PreviewAccount from '~/components/Popper/PreviewAccount';
 
 const cx = classNames.bind(styles);
 
@@ -123,24 +124,21 @@ function Sidebar() {
     return (
         <aside className={cx('wrapper')}>
             <Menu>
-                <MenuItem icon={<Home />} iconActive={<HomeActive />} title="Home" to={config.routes.home} />
+                <MenuItem icon={<Home />} iconActive={<HomeActive />} title="For You" to={config.routes.home} />
                 <MenuItem
                     icon={<GroupUser />}
                     iconActive={<GroupUserActive />}
                     title="Following "
                     to={config.routes.following}
                 />
-                <MenuItem icon={<Live />} iconActive={<LiveActive />} title="Home" to={config.routes.live} />
+                <MenuItem icon={<Live />} iconActive={<LiveActive />} title="LIVE" to={config.routes.live} />
             </Menu>
 
-            <AccountList label={'Suggested accounts'} className={cx('')}>
+            <AccountList label={'Suggested accounts'}>
                 {suggestAccounts.map((acc) => (
-                    <Account key={acc.id} data={acc} />
-                ))}
-            </AccountList>
-            <AccountList label={'Suggested accounts'} className={cx('')}>
-                {suggestAccounts.map((acc) => (
-                    <Account key={acc.id} data={acc} />
+                    <PreviewAccount key={acc.id} data={acc}>
+                        <Account data={acc} />
+                    </PreviewAccount>
                 ))}
             </AccountList>
         </aside>

@@ -1,0 +1,81 @@
+.container {
+}
+
+.body {
+    padding: 20px;
+    width: 320px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+    margin-bottom: 12px;
+    .avatar {
+        display: flex;
+        align-items: center;
+        img {
+            height: 100%;
+            width: 44px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+    .flw-btn {
+        height: 34px;
+        width: 106px;
+        font-weight: 600;
+    }
+}
+
+.check {
+    margin-left: 6px;
+    position: relative;
+    top: 2px;
+    color: rgb(32, 213, 236);
+}
+.title {
+    color: rgb(22, 24, 35);
+    font-family: SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 22px;
+    margin-top: -2px;
+    max-width: 260px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.description {
+    color: rgba(22, 24, 35);
+    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 20px;
+    max-width: 260px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.content {
+    display: flex;
+    margin-top: 8px;
+}
+
+.number {
+    font-weight: 600;
+    font-size: 1.8rem;
+
+    span {
+        font-weight: 700;
+        margin-right: 4px;
+    }
+}
+
+.number + .number {
+    span {
+        margin-left: 12px;
+    }
+}
