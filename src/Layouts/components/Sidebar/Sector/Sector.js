@@ -1,22 +1,23 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 
-import styles from './AccountList.module.scss';
+import styles from './Sector.module.scss';
 
 const cx = classNames.bind(styles);
 
-function AccountList({ label, children }) {
+function Sector({ label, children, moreBtnText }) {
     return (
         <div className={cx('container')}>
             <h4 className={cx('label')}>{label}</h4>
             {children}
-            <span className={cx('more-btn')}>See all</span>
+            {!!moreBtnText && <span className={cx('more-btn')}>{moreBtnText}</span>}
         </div>
     );
 }
 
-AccountList.propTypes = {
+Sector.propTypes = {
     label: PropTypes.string,
     children: PropTypes.node.isRequired,
+    moreBtnText: PropTypes.string,
 };
-export default AccountList;
+export default Sector;

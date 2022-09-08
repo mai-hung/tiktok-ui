@@ -1,44 +1,3 @@
-.container {
-    position: relative;
-    padding: 16px 0;
-
-    &::before {
-        content: '';
-        position: absolute;
-        left: 8px;
-        right: 8px;
-        top: 0;
-        height: 1px;
-        background: rgba(22, 24, 35, 0.12);
-        -webkit-transform: scaleY(0.5);
-        -moz-transform: scaleY(0.5);
-        -ms-transform: scaleY(0.5);
-        transform: scaleY(0.5);
-    }
-}
-
-.label {
-    padding: 0 8px;
-    margin-bottom: 8px;
-    color: rgba(22, 24, 35, 0.75);
-    font-size: 1.4rem;
-    line-height: 20px;
-    font-weight: 600;
-}
-.more-btn {
-    font-size: 1.4rem;
-    line-height: 20px;
-    color: var(--primary);
-    display: flex;
-    flex-direction: row;
-    -webkit-box-align: center;
-    align-items: center;
-    padding: 0px 8px;
-    margin-top: 8px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
 // Account
 .wrapper {
     display: flex;
@@ -71,7 +30,7 @@
     font-family: SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
     font-weight: 700;
     font-size: 1.6rem;
-    line-height: 22px;
+    line-height: 20px;
     margin-top: -2px;
     max-width: 260px;
     text-overflow: ellipsis;

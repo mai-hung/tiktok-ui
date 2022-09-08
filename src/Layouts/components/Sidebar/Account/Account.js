@@ -3,7 +3,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 
-import styles from './AccountList.module.scss';
+import styles from './Account.module.scss';
 import Image from '~/components/Image';
 import { images } from '~/assets';
 

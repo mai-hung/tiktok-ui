@@ -1,13 +1,14 @@
 import classNames from 'classnames/bind';
 
-import { Home, Live, GroupUser, HomeActive, GroupUserActive, LiveActive } from '~/components/Icons';
+import { Home, Live, GroupUser, HomeActive, GroupUserActive, LiveActive, Tag, Music } from '~/components/Icons';
 import config from '~/config';
 import Menu, { MenuItem } from './Menu';
-import AccountList from './AccountList';
 import styles from './Sidebar.module.scss';
 import { useEffect, useState } from 'react';
-import Account from './AccountList/Account';
+import Account from './Account';
 import PreviewAccount from '~/components/Popper/PreviewAccount';
+import Sector from './Sector';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -114,11 +115,33 @@ const data = [
     },
 ];
 
+const data2 = [
+    {
+        tag: 'doilathe',
+    },
+    {
+        tag: 'mackedoi',
+    },
+    {
+        music: 'Thiên Thần Tình Yêu - RICKY STAR',
+    },
+    {
+        tag: '7749hieuung',
+    },
+    {
+        music: 'Thằng Hầu (Thái Hoàng Remix) [Short Version] - Dunghoangpham',
+    },
+    {
+        music: 'Tình Đã Đầy Một Tim - Huyền Tâm Môn',
+    },
+];
 function Sidebar() {
     const [suggestAccounts, setSuggestAccounts] = useState([]);
+    const [tags, setTags] = useState([]);
 
     useEffect(() => {
         setSuggestAccounts(data);
+        setTags(data2);
     }, []);
 
     return (
@@ -134,13 +157,61 @@ function Sidebar() {
                 <MenuItem icon={<Live />} iconActive={<LiveActive />} title="LIVE" to={config.routes.live} />
             </Menu>
 
-            <AccountList label={'Suggested accounts'}>
+            <Sector label={'Suggested accounts'} moreBtnText="See all">
                 {suggestAccounts.map((acc) => (
                     <PreviewAccount key={acc.id} data={acc}>
                         <Account data={acc} />
                     </PreviewAccount>
                 ))}
-            </AccountList>
+            </Sector>
+
+            <Sector label={'Following accounts'} moreBtnText="See more">
+                {suggestAccounts.map((acc) => (
+                    <Account key={acc.id} data={acc} />
+                ))}
+            </Sector>
+
+            <Sector label={'Discover'}>
+                <div className={cx('wrap-list')}>
+                    {tags.map((tag, index) => (
+                        <Button
+                            key={index}
+                            className={cx('tag')}
+                            to={'/'}
+                            size="small"
+                            rounded
+                            LeftIcon={tag.tag ? Tag : Music}
+                        >
+                            {tag.tag ? tag.tag : tag.music}
+                        </Button>
+                    ))}
+                </div>
+            </Sector>
+
+            <Sector>
+                <div className={cx('wrap-list')}>
+                    <div classNames={cx('container-link')}>
+                        <Button text className={cx('link')}>
+                            About
+                        </Button>
+                        <Button text className={cx('link')}>
+                            TikTok Browser
+                        </Button>
+                        <Button text className={cx('link')}>
+                            Newsroom
+                        </Button>
+                        <Button text className={cx('link')}>
+                            Contact
+                        </Button>
+                        <Button text className={cx('link')}>
+                            Careers
+                        </Button>
+                        <Button text className={cx('link')}>
+                            ByteDance
+                        </Button>
+                    </div>
+                </div>
+            </Sector>
         </aside>
     );
 }
