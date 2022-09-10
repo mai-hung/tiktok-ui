@@ -1,0 +1,42 @@
+.wrapper {
+    display: flex;
+    width: 592px;
+    max-width: 592px;
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.body {
+    flex: 1;
+    display: flex;
+}
+
+.btn {
+    width: fit-content;
+    padding: 0;
+}
+.header {
+}
+
+.heading {
+}
+
+.nickname {
+}
+
+.tick {
+}
+
+.name {
+}
+
+.description {
+}
+
+.flw {
+}

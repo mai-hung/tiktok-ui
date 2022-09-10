@@ -190,7 +190,7 @@ function Sidebar() {
 
             <Sector>
                 <div className={cx('wrap-list')}>
-                    <div classNames={cx('container-link')}>
+                    <div className={cx('container-link')}>
                         <Button text className={cx('link')}>
                             About
                         </Button>
