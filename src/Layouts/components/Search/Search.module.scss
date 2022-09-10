@@ -59,7 +59,7 @@
         position: absolute;
         width: 1px;
         height: 26px;
-        top: calc(calc(var(--height-search) - 26px) / 2px);
+        top: calc(calc(var(--height-search) - 26) / 2) px;
         right: 96%;
         background-color: var(--disable-text);
     }
